@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.venv/
+.ENV/
+.ENV/
+.venv.bak/
+.ENV.bak/
+.PYENV/
+.pyenv/
+.pytest_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.tox/
+.coverage.xml
+.coverage.xml.*
+.pytest_cache/
+.pytest_cache/
+.pytest_cache/
+.pytest_cache/
+.pytest_cache/
+.pytest_cache/
+
+# Virtual Environment
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# uv lock file
+uv.lock
