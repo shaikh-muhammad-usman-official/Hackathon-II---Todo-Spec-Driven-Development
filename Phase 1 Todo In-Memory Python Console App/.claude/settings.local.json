@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 10s uv run python -m todo_app.main interactive)",
+      "Bash(uv run python -m todo_app.main --help)",
+      "Bash(uv run python -m todo_app.main add \"Test Default Interactive Mode\" --description \"This should work with the new default behavior\")",
+      "Bash(timeout 5s uv run python -m todo_app.main)",
+      "Bash(timeout 10s uv run python -m todo_app.main)",
+      "Bash(timeout 15s uv run python -m todo_app.main)",
+      "Bash(git config --global --list)"
+    ]
+  }
+}
