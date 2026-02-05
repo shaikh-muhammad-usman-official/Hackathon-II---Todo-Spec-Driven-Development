@@ -43,7 +43,11 @@
       "Bash(findstr -i docker)",
       "Bash(docker-compose build frontend)",
       "Bash(vercel project remove:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(dir:*)",
+      "Bash(uvicorn main:app --host 0.0.0.0 --port 8000:*)",
+      "Bash(powershell -Command \"Get-Content page.tsx\")",
+      "Bash(findstr:*)"
     ]
   }
 }
