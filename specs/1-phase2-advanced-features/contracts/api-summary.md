@@ -1,6 +1,6 @@
 # API Contracts Summary - Phase 2 Advanced Features
 
-**Base URL**: `http://localhost:8000` (development) | `https://asma-yaseen-evolution-todo-api.hf.space` (production)
+**Base URL**: `http://localhost:8000` (development) | `https://shaikhmusman122323-hackathon2-phase3.hf.space` (production)
 **Authentication**: JWT Bearer token in `Authorization` header
 **Content-Type**: `application/json`
 

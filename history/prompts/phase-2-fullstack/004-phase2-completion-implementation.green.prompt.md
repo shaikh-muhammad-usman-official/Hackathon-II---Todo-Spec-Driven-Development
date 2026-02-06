@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4.5
 feature: phase-2-fullstack
 branch: phase-2-fullstack
-user: asmayaseen
+user: Shaikhmuhammadusmsn
 command: manual implementation
 labels: ["implementation", "phase-2", "fullstack", "auth", "crud"]
 links:

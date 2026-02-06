@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5
 feature: phase-2-fullstack
 branch: main
-user: asmayaseen
+user: Shaikhmuhammadusmsn
 command: /sp.implement frontend
 labels: ["frontend", "nextjs", "authentication", "ui-setup", "phase-2"]
 links:

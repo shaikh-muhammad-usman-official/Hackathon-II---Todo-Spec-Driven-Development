@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5
 feature: 1-phase2-advanced-features
 branch: 1-phase2-advanced-features
-user: Asma yaseen
+user: Shaikh Muhammad Usman
 command: /sp.specify
 labels: ["specification", "phase-2", "advanced-features", "intermediate-features", "recurring-tasks", "notifications", "analytics", "keyboard-shortcuts"]
 links:

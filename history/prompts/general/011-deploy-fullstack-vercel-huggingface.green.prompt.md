@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5
 feature: none
 branch: main
-user: Asma yaseen
+user: Shaikh Muhammad Usman
 command: deployment-automation
 labels: ["deployment", "vercel", "hugging-face", "full-stack", "production", "environment-variables", "docker"]
 links:
@@ -53,7 +53,7 @@ Diagnosed and resolved multiple deployment blockers:
 2. **Backend Deployment:**
    - Created Hugging Face Space configuration (README_HF.md)
    - Updated .dockerignore for Python backend
-   - Verified backend deployed successfully at: https://asma-yaseen-evolution-todo-api.hf.space
+   - Verified backend deployed successfully at: https://shaikhmusman122323-hackathon2-phase3.hf.space
    - Confirmed database connection and table initialization
 
 3. **Environment Configuration:**
@@ -62,8 +62,8 @@ Diagnosed and resolved multiple deployment blockers:
    - Created comprehensive DEPLOYMENT.md guide
 
 4. **Integration:**
-   - Backend URL: https://asma-yaseen-evolution-todo-api.hf.space
-   - Frontend URL: https://hackathon-2-chi-one.vercel.app
+   - Backend URL: L=https://shaikhmusman122323-hacathon.hf.space
+   - Frontend URL: https://.vercel.app
    - Documented Vercel environment variable requirement (manual UI step)
 
 ## Outcome
@@ -96,13 +96,13 @@ Diagnosed and resolved multiple deployment blockers:
 
 ### URLs
 - **Frontend (Vercel):** https://hackathon-2-chi-one.vercel.app
-- **Backend (HF Space):** https://asma-yaseen-evolution-todo-api.hf.space
-- **GitHub Repo:** https://github.com/Asmayaseen/hackathon-2
+- **Backend (HF Space):** https://shaikhmusman122323-hackathon2-phase3.hf.space
+- **GitHub Repo:** https://github.com/Shaikhmuhammadusmsn/hackathon-2
 
 ### Environment Variables Required
 ```env
 # Vercel (manual setup required)
-NEXT_PUBLIC_API_URL=https://asma-yaseen-evolution-todo-api.hf.space
+NEXT_PUBLIC_API_URL=https://shaikhmusman122323-hackathon2-phase3.hf.space
 
 # Hugging Face Secrets (already configured)
 DATABASE_URL=postgresql://...

@@ -8,12 +8,12 @@
 - MODEL: claude-sonnet-4-5-20250929
 - FEATURE: authentication
 - BRANCH: restructure/monorepo-optimization
-- USER: Asmayaseen
+- USER: Shaikhmuhammadusmsn
 - COMMAND: /force-nav
 - LABELS: ["navigation", "cookies", "nextjs", "auth-fix"]
 - LINKS:
   - SPEC: null
-  - PR: https://github.com/Asmayaseen/hackathon-2/pull/new/restructure/monorepo-optimization
+  - PR: https://github.com/Shaikhmuhammadusmsn/hackathon-2/pull/new/restructure/monorepo-optimization
 - FILES_YAML:
   - phase-2/frontend/app/auth/signin/page.tsx
   - phase-2/frontend/app/auth/signup/page.tsx

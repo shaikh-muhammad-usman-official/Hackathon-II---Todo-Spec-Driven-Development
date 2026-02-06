@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5-20250929
 feature: none
 branch: main
-user: asmayaseen
+user: Shaikhmuhammadusmsn
 command: fix vercel build
 labels: ["typescript", "bug-fix", "api-types", "vercel", "build-fix"]
 links:
@@ -28,7 +28,7 @@ tests:
 ```
 00:59:13.731 Running build in Washington, D.C., USA (East) – iad1
 00:59:13.732 Build machine configuration: 2 cores, 8 GB
-00:59:13.746 Cloning github.com/Asmayaseen/hackathon-2 (Branch: main, Commit: 4015cb6)
+00:59:13.746 Cloning github.com/Shaikhmuhammadusmsn/hackathon-2 (Branch: main, Commit: 4015cb6)
 00:59:13.747 Skipping build cache, deployment was triggered without cache.
 00:59:14.371 Cloning completed: 625.000ms
 00:59:14.863 Running "vercel build"

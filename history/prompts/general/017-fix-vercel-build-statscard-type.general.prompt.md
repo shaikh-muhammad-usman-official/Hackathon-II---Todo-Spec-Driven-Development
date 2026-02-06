@@ -7,14 +7,14 @@ surface: agent
 model: claude-sonnet-4-5
 feature: none
 branch: 1-phase2-advanced-features
-user: asmayaseen
+user: Shaikhmuhammadusmsn
 command: none
 labels: ["vercel", "typescript", "build-fix", "statscard"]
 links:
   spec: null
   ticket: null
   adr: null
-  pr: https://github.com/Asmayaseen/hackathon-2/pull/6
+  pr: https://github.com/Shaikhmuhammadusmsn/hackathon-2/pull/6
 files:
  - phase-2/frontend/src/components/StatsCard.tsx
 tests:

@@ -8,7 +8,7 @@
 - MODEL: claude-sonnet-4-5-20250929
 - FEATURE: deployment
 - BRANCH: main
-- USER: Asmayaseen
+- USER: Shaikhmuhammadusmsn
 - COMMAND: /deploy
 - LABELS: ["restructure", "vercel", "monorepo"]
 - LINKS:

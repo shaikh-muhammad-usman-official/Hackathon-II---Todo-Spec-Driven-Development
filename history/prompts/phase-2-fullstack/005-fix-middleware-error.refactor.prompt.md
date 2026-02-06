@@ -8,12 +8,12 @@
 - MODEL: claude-sonnet-4-5-20250929
 - FEATURE: authentication
 - BRANCH: restructure/monorepo-optimization
-- USER: Asmayaseen
+- USER: Shaikhmuhammadusmsn
 - COMMAND: /fix-middleware
 - LABELS: ["nextjs-16", "middleware", "bug-fix"]
 - LINKS:
   - SPEC: null
-  - PR: https://github.com/Asmayaseen/hackathon-2/pull/new/restructure/monorepo-optimization
+  - PR: https://github.com/Shaikhmuhammadusmsn/hackathon-2/pull/new/restructure/monorepo-optimization
 - FILES_YAML:
   - phase-2/frontend/middleware.ts
 - TESTS_YAML:

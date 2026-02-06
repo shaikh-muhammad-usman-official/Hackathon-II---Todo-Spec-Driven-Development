@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5-20250929
 feature: none
 branch: main
-user: Asma yaseen
+user: Shaikh Muhammad Usman
 command: /sp.constitution
 labels: ["constitution", "initialization", "hackathon", "spec-driven-development"]
 links:

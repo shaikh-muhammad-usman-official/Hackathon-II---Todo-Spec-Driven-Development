@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5
 feature: phase-2-fullstack
 branch: phase-2-fullstack
-user: asmayaseen
+user: Shaikhmuhammadusmsn
 command: manual
 labels: ["phase-2", "spec-driven", "full-stack", "requirements"]
 links:

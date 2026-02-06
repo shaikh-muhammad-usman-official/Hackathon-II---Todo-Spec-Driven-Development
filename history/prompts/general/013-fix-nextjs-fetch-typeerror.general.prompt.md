@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5-20250929
 feature: none
 branch: 1-phase2-advanced-features
-user: Asma Yaseen
+user: Shaikh Muhammad Usman
 command: user
 labels: [bugfix, nextjs, routing, navigation, fetch]
 links:
@@ -35,7 +35,7 @@ Call Stack
 
 ## Response snapshot
 
-Asma Yaseen, I have investigated the 'Failed to fetch' error. It was caused by the application attempting to fetch data from the server side or during navigation to routes where the backend might have been momentarily unreachable or routes mapping was inconsistent. I ensured all primary navigation routes are correctly linked and that the frontend development server is stable.
+Shaikh Muhammad Usman, I have investigated the 'Failed to fetch' error. It was caused by the application attempting to fetch data from the server side or during navigation to routes where the backend might have been momentarily unreachable or routes mapping was inconsistent. I ensured all primary navigation routes are correctly linked and that the frontend development server is stable.
 
 ## Outcome
 

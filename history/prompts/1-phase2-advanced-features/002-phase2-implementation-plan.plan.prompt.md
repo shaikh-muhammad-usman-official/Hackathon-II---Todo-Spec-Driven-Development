@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5
 feature: 1-phase2-advanced-features
 branch: 1-phase2-advanced-features
-user: Asma yaseen
+user: Shaikh Muhammad Usman
 command: /sp.plan
 labels: ["planning", "phase-2", "architecture", "subagents", "13-features", "backend-api", "frontend-ui", "database-schema"]
 links:

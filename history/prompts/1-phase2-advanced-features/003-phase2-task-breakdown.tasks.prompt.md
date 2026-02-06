@@ -7,7 +7,7 @@ surface: agent
 model: claude-sonnet-4-5
 feature: 1-phase2-advanced-features
 branch: 1-phase2-advanced-features
-user: Asma yaseen
+user: Shaikh Muhammad Usman
 command: /sp.tasks
 labels: ["tasks", "task-breakdown", "user-stories", "13-features", "206-tasks", "mvp-strategy", "parallel-execution"]
 links:

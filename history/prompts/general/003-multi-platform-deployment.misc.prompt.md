@@ -8,12 +8,12 @@
 - MODEL: claude-sonnet-4-5-20250929
 - FEATURE: deployment
 - BRANCH: restructure/monorepo-optimization
-- USER: Asmayaseen
+- USER: Shaikhmuhammadusmsn
 - COMMAND: /deploy-all
 - LABELS: ["vercel", "huggingface", "docker", "local-run"]
 - LINKS:
   - SPEC: /specs/overview.md
-  - PR: https://github.com/Asmayaseen/hackathon-2/pull/new/restructure/monorepo-optimization
+  - PR: https://github.com/Shaikhmuhammadusmsn/hackathon-2/pull/new/restructure/monorepo-optimization
 - FILES_YAML:
   - phase-2/backend/Dockerfile
   - phase-2/backend/README.md

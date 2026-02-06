@@ -8,12 +8,12 @@
 - MODEL: claude-sonnet-4-5-20250929
 - FEATURE: phase-2-fullstack
 - BRANCH: restructure/monorepo-optimization
-- USER: Asmayaseen
+- USER: Shaikhmuhammadusmsn
 - COMMAND: /sp.implement
 - LABELS: ["full-stack", "crud", "authentication", "complete"]
 - LINKS:
   - SPEC: /specs/overview.md
-  - PR: https://github.com/Asmayaseen/hackathon-2/pull/new/restructure/monorepo-optimization
+  - PR: https://github.com/Shaikhmuhammadusmsn/hackathon-2/pull/new/restructure/monorepo-optimization
 - FILES_YAML:
   - phase-2/backend/main.py
   - phase-2/frontend/app/
