@@ -1,0 +1,16 @@
+type: docker
+gpu: false
+secrets:
+  - DATABASE_URL
+  - JWT_SECRET
+  - CORS_ORIGINS
+  - GROQ_API_KEY
+  - GROQ_BASE_URL
+  - AI_MODEL
+env:
+  - DATABASE_URL=postgresql://todo_user:todo_pass@localhost:5432/todo_db
+  - JWT_SECRET=supersecretkeythatisatleast32characterslongforhs256algorithm
+  - CORS_ORIGINS=http://localhost:3000,http://localhost:3002,https://frontend-qnzzeug89-asma-yaseens-projects.vercel.app,https://frontend-umber-nine-80.vercel.app
+  - GROQ_API_KEY=
+  - GROQ_BASE_URL=https://api.groq.com/openai/v1
+  - AI_MODEL=openai/gpt-oss-20b
