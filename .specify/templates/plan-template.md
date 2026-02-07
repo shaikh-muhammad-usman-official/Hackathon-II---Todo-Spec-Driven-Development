@@ -31,17 +31,6 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-**Environment Safety Check:**
-- No real environment variables accessed or logged
-- Secrets only referenced symbolically in code
-- `.env.example` files created instead of `.env` files
-- No hardcoded credentials in configuration
-
-**Phase Compliance Check:**
-- Feature implementation aligns with current phase requirements
-- No premature introduction of Phase III+ features if in Phase II
-- Architecture decisions appropriate for current phase
-
 [Gates determined based on constitution file]
 
 ## Project Structure

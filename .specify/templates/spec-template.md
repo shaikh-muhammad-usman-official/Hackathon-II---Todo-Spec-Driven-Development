@@ -80,9 +80,6 @@
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
   Fill them out with the right functional requirements.
-
-  FUTURE-PHASE COMPATIBILITY: Consider how this feature will evolve in later phases.
-  Design requirements to be compatible with Phase IV (Kubernetes) and Phase V (Event-driven) requirements.
 -->
 
 ### Functional Requirements

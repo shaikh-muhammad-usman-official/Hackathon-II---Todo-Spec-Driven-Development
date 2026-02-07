@@ -1,213 +1,347 @@
-<!-- SYNC IMPACT REPORT
-Version change: 1.1.0 → 1.2.0
-Modified principles: All principles enhanced to meet HARD REQUIREMENTS
-Added sections: Enhanced statelessness requirements, contract-first interfaces, workflow enforcement
-Removed sections: None
+<!--
+SYNC IMPACT REPORT
+==================
+Version change: 1.0.0 → 1.1.0
+Added new principle for Phase IV Kubernetes deployment requirements.
+
+Added sections:
+- Principle VIII: Cloud-Native Architecture (Kubernetes-specific requirements)
+- Kubernetes Architecture Requirements (under Technology Stack Requirements)
+
+Modified sections:
+- Updated Phase IV technology stack details for clarity
+
 Templates requiring updates:
-- ✅ .specify/templates/plan-template.md – update env-safety checkpoint
-- ✅ .specify/templates/spec-template.md – update requirements alignment
-- ✅ .specify/templates/tasks-template.md – update task categorization
+✅ plan-template.md - Constitution Check section aligns with new cloud-native principle
+✅ spec-template.md - User scenarios support container/K8s deployment stories
+✅ tasks-template.md - Task structure supports containerization and deployment tasks
+
 Follow-up TODOs: None
 -->
 
-# Hackathon II – Todo SDD Constitution
-<!-- Spec-Driven Development Constitution for Agentic Todo System -->
+# Evolution of Todo Constitution
 
 ## Core Principles
 
-### I. Spec-Driven Development Is Mandatory (NON-NEGOTIABLE)
-All work in this project MUST follow the Spec-Kit Plus lifecycle:
+### I. Spec-Driven Development (NON-NEGOTIABLE)
 
-**Specify → Plan → Tasks → Implement**
+All development MUST follow the Spec-Driven Development workflow: Specify → Plan → Tasks → Implement.
 
-- No agent (Claude Code or otherwise) may write or modify code without:
-  - An approved specification
-  - A generated plan
-  - An explicit task reference
-- Any ambiguity MUST result in a spec update, not an assumption
-- Manual coding by humans is prohibited; implementation is agent-generated only
-- This Constitution overrides specs, plans, tasks, and code in case of conflicts
+- No code may be written without a completed and approved specification
+- Every implementation task MUST reference a Task ID from tasks.md
+- Specifications MUST be refined iteratively until Claude Code generates correct output
+- Manual coding is prohibited; Claude Code MUST generate all implementation code
+- All architectural decisions MUST be documented in plan.md before implementation
 
-### II. Constitution Supremacy
-This Constitution is the **highest authority** in the project hierarchy.
+**Rationale**: Ensures alignment across agents, prevents "vibe coding," and guarantees
+traceability from requirements to implementation. Critical for AI-driven development where
+specifications guide code generation.
 
-Order of precedence:
-1. **Constitution**
-2. Specify
-3. Plan
-4. Tasks
-5. Code
+### II. Phased Evolution
 
-If conflicts arise, lower-level artifacts MUST be amended to comply with this Constitution.
+Features MUST be developed incrementally following the hackathon phase structure:
 
-### III. Phase-Gated Architecture
-The system MUST evolve strictly by hackathon phases.
+- Phase I: In-memory console application (Python, Basic Level features)
+- Phase II: Full-stack web application (Next.js, FastAPI, Neon DB, Basic Level)
+- Phase III: AI-powered chatbot (OpenAI Agents SDK, MCP Server, Basic Level)
+- Phase IV: Local Kubernetes deployment (Minikube, Helm, kubectl-ai, Basic Level)
+- Phase V: Advanced cloud deployment (Event-driven with Kafka/Dapr, Advanced Level)
 
-- Phase I: In-memory Python CLI only
-- Phase II: Full-stack Web (Next.js + FastAPI + SQLModel)
-- Phase III: AI Agents (OpenAI Agents SDK + MCP)
-- Phase IV: Local Kubernetes (Minikube + Helm)
-- Phase V: Cloud-native, event-driven (Kafka + Dapr)
+Each phase MUST be complete and functional before advancing to the next. No phase may be
+skipped. Each phase builds upon the previous phase's functionality.
 
-Agents MUST NOT introduce future-phase capabilities early:
-- Databases before Phase II
-- AI agents before Phase III
-- Kubernetes or Kafka before Phase IV/V
+**Rationale**: Mimics real-world software evolution from prototype to production-grade
+distributed system. Ensures learning progression and allows independent validation at each stage.
 
-Each phase requires its **own specs**, **own validation**, and **explicit completion**.
+### III. Technology Stack Adherence
 
-### III-A. Environment Variable & Secret Safety (CRITICAL)
-**Real environment variables MUST NEVER be accessed, read, logged, or assumed.**
+The following technology stack is mandatory and MUST NOT be substituted:
 
-Rules:
-- Agents MAY ONLY:
-  - Reference environment variables symbolically
-  - Generate `env.example` or `.env.example` files
-- Agents MUST NOT:
-  - Read actual `.env` files
-  - Assume or infer real values
-  - Inline secrets in code or configs
-  - Log secret values
-  - Commit credentials of any kind
-  - Embed secrets in Dockerfiles, Helm charts, or YAML files
-
-Allowed examples:
-```env
-DATABASE_URL=postgresql://user:password@host/db
-OPENAI_API_KEY=sk-xxxx
-JWT_SECRET=replace_me
-```
-
-Explicit forbidden behaviors:
-- `process.env.X` value inspection
-- Reading `.env` files
-- Guessing cloud credentials
-- Embedding secrets in Dockerfiles, Helm charts, or YAML
-- Logging secret values
-- Hardcoding secrets in code
-
-This rule applies to ALL phases, including Kubernetes and cloud deployments.
-
-### IV. Statelessness & Determinism (MANDATORY)
-The system MUST enforce stateless behavior:
-
-Backend Services (Phase II+):
-- MUST be stateless
-- All state MUST reside in databases or Dapr state stores
-
-AI Agents (Phase III+):
-- MUST be stateless between requests
-- MUST be deterministic given identical inputs and stored state
-- MUST NOT maintain hidden memory or implicit context
-- Behavior MUST be reproducible given same inputs and state
-
-### V. Contract-First Interfaces (EXPLICIT BOUNDARIES)
-All system boundaries MUST be explicit and inspectable with no implicit coupling:
-
-- CLI: stdin/args → stdout/stderr
-- HTTP APIs: JSON contracts over HTTP
-- MCP Tools: typed schemas with strict parameters
-- Events: documented payloads with defined schemas
-
-No implicit coupling is permitted between system components.
-
-### VI. Security & Identity (Phase-Aware)
-Security requirements MUST evolve by phase:
+**Phase I:**
+- Language: Python 3.13+
+- Package Manager: UV
+- Development: Claude Code + Spec-Kit Plus
 
 **Phase II:**
-- JWT-based authentication is mandatory
-- Backend MUST verify JWTs independently
-- User isolation MUST be enforced on every operation
-- Secrets MUST exist only as placeholders in `env.example`
+- Frontend: Next.js 16+ (App Router)
+- Backend: Python FastAPI
+- ORM: SQLModel
+- Database: Neon Serverless PostgreSQL
+- Authentication: Better Auth with JWT
 
 **Phase III:**
-- MCP tools MUST require explicit user identity propagation
-- No implicit trust MUST exist between agent and backend
+- Frontend: OpenAI ChatKit
+- AI Framework: OpenAI Agents SDK
+- MCP Server: Official MCP SDK
+- Database: Same as Phase II (Neon)
 
 **Phase IV:**
-- Secrets MUST be referenced via Kubernetes Secrets (placeholders only)
-- No secrets MUST be embedded inside container images or manifests
+- Containerization: Docker (Docker Desktop with Gordon AI Agent)
+- Container Registry: Local (Minikube registry) or Docker Hub
+- Orchestration: Kubernetes (Minikube for local development)
+- Package Manager: Helm Charts
+- AI DevOps: kubectl-ai, kagent
+- Application: Phase III Todo Chatbot (containerized)
 
 **Phase V:**
-- Dapr or cloud-native secret managers MUST be used
-- Zero secret exposure MUST be maintained in logs, code, or events
+- Cloud Kubernetes: DOKS (DigitalOcean), GKE (Google), or AKS (Azure)
+- Event Streaming: Kafka (Redpanda Cloud or Strimzi self-hosted)
+- Application Runtime: Dapr (distributed application runtime)
+- CI/CD: GitHub Actions
 
-### VII. Test-First Thinking (Mandatory)
-Although agents generate code:
+Additional tools and libraries may be added but core stack MUST remain as specified.
 
-- Acceptance criteria in specs act as executable truth
-- Tasks MUST be testable in isolation
-- Integration boundaries MUST be explicitly validated
-- Stateless behavior MUST be verifiable across restarts
+**Rationale**: Ensures consistent evaluation criteria across all hackathon participants and
+provides hands-on experience with modern AI-native, cloud-native technology stack.
 
-If behavior cannot be tested or observed, it is incorrectly designed.
+### IV. Independent User Stories
 
-### VIII. Library-First & Service-First Design
-Every capability MUST be designed as:
+User stories MUST be:
 
-- A standalone library or service
-- With a clear responsibility
-- Independently testable
-- Explicit inputs and outputs
+- Prioritized (P1, P2, P3...) with P1 being most critical
+- Independently implementable without requiring other stories
+- Independently testable with clear acceptance criteria
+- Capable of delivering standalone value as an MVP increment
 
-### IX. Event-Driven Future Compatibility
-Even before Phase V, the system MUST prepare for event-driven architecture:
+Each user story MUST include:
+- Clear priority level and justification
+- Independent test description
+- Given/When/Then acceptance scenarios
 
-Before Kafka implementation:
-- Task lifecycle MUST be event-friendly
-- Async workflows MUST NOT rely on synchronous chains
-- Side effects MUST be separable and trackable
+**Rationale**: Enables iterative delivery, parallel development when possible, and ensures
+each story can be validated independently. Critical for spec-driven approach where each
+story maps to distinct task groups.
 
-Phase V mandates:
-- Kafka or Kafka-compatible pub/sub systems
-- Dapr abstractions preferred over direct SDKs
-- Services MUST communicate via events, NOT chained APIs
+### V. Test-Driven Development (Conditional)
 
-This system evolves from CRUD → distributed intelligence.
+When tests are explicitly requested in specifications:
 
-### X. Cloud-Native by Design (Not by Accident)
-From Phase IV onward, the system MUST assume:
+- Tests MUST be written BEFORE implementation
+- Tests MUST fail initially (Red phase)
+- Implementation proceeds only after tests fail (Green phase)
+- Refactoring follows successful implementation (Refactor phase)
+- Red-Green-Refactor cycle is strictly enforced
 
-- Horizontal scalability
-- Pod restarts at any time
-- No in-memory persistence
-- Observability via logs and events
-- Declarative infrastructure (Helm, YAML, blueprints)
+When tests are NOT requested:
+- TDD is optional
+- Focus remains on functional requirements and acceptance criteria
 
-If a component fails when restarted, it violates this Constitution.
+**Rationale**: Enforces test-first discipline when quality assurance is prioritized, but
+recognizes that hackathon velocity may prioritize feature delivery over comprehensive
+test coverage in some phases.
 
-## Development Constraints
+### VI. Stateless Architecture
 
-- **Language**: Python 3.13+
-- **Package Management**: uv
-- **Frontend**: Next.js (App Router)
-- **Backend**: FastAPI + SQLModel
-- **AI**: OpenAI Agents SDK
-- **MCP**: Official MCP SDK
-- **Deployment**: Docker → Minikube → Cloud Kubernetes
-- **Messaging**: Kafka (or Kafka-compatible via Dapr)
+Backend services MUST be stateless:
 
-Any deviation MUST be justified in the spec and approved before implementation.
+- All state MUST be persisted to database (Neon PostgreSQL)
+- No in-memory session storage on server
+- Conversation state stored in database tables (Phase III+)
+- Server restarts MUST NOT lose user data or context
+- Horizontal scalability MUST be possible
 
-## Workflow Enforcement Rules
+**Rationale**: Prepares for Kubernetes deployment (Phase IV-V) where pods can be
+terminated and rescheduled. Enables resilient, scalable architecture essential for
+cloud-native applications.
 
-- No code without Tasks
-- No Tasks without a Plan
-- No Plan without a Specify
-- No real secrets, ever
-- Agents MUST stop and request clarification when underspecified
-- All work MUST follow SDD lifecycle: Specify → Plan → Tasks → Implement
+### VII. Documentation and Traceability
+
+All work MUST maintain comprehensive documentation:
+
+- Constitution (this file): Project principles and constraints
+- Spec files (specs/*/spec.md): WHAT to build with user stories and acceptance criteria
+- Plan files (specs/*/plan.md): HOW to build with architecture and technical decisions
+- Tasks files (specs/*/tasks.md): Breakdown into testable, atomic work units
+- CLAUDE.md: Runtime guidance for Claude Code
+- Prompt History Records (history/prompts/): Every significant user interaction
+- Architecture Decision Records (history/adr/): All significant architectural decisions
+
+Code files MUST include comments linking to Task IDs and relevant spec sections.
+
+**Rationale**: Ensures traceability from requirements through implementation, enables
+knowledge transfer, and provides learning artifacts for hackathon evaluation.
+
+### VIII. Cloud-Native Architecture (Phase IV+)
+
+All containerized services MUST follow cloud-native principles:
+
+**Container Standards:**
+- All services MUST be containerized using Docker with multi-stage builds
+- Dockerfiles MUST use official base images and follow security best practices
+- Container images MUST be tagged with semantic versions (not :latest in production)
+- Health checks MUST be implemented for all containers
+- Containers MUST be stateless; persistent data via external volumes/databases
+
+**Kubernetes Deployment:**
+- All deployments MUST use Helm charts for package management
+- Services MUST define resource limits (CPU, memory) for all containers
+- Liveness and readiness probes MUST be configured
+- ConfigMaps MUST be used for non-sensitive configuration
+- Secrets MUST be used for sensitive data (API keys, credentials)
+- Services MUST be exposed via Kubernetes Service resources
+
+**AI-Assisted DevOps:**
+- Docker operations MAY use Gordon AI Agent for assistance
+- Kubernetes operations SHOULD use kubectl-ai for natural language commands
+- Cluster analysis MAY use kagent for intelligent operations
+- All AI-generated manifests MUST be reviewed before applying
+
+**Environment Parity:**
+- Local Minikube deployment MUST match cloud deployment configuration
+- Environment-specific values MUST be externalized via Helm values files
+- Development, staging, and production MUST use identical container images
+
+**Rationale**: Ensures production-ready containerization and Kubernetes deployment patterns.
+AI-assisted DevOps tools accelerate learning while maintaining human oversight.
+Environment parity prevents "works on my machine" issues.
+
+## Technology Stack Requirements
+
+### Mandatory Technologies by Phase
+
+See Principle III (Technology Stack Adherence) for complete stack requirements.
+
+### MCP Server Architecture (Phase III+)
+
+The MCP server MUST:
+- Expose task operations as standardized tools using Official MCP SDK
+- Be stateless with all state persisted to database
+- Implement tools: add_task, list_tasks, complete_task, delete_task, update_task
+- Accept user_id parameter for all operations to ensure data isolation
+- Return structured responses with task_id, status, and title
+
+### Kubernetes Architecture (Phase IV+)
+
+The Kubernetes deployment MUST include:
+
+**Core Components:**
+- Frontend Deployment (Next.js container, 1-3 replicas)
+- Backend Deployment (FastAPI container, 1-3 replicas)
+- Ingress Controller for external traffic routing
+- Persistent storage configuration for any required volumes
+
+**Helm Chart Structure:**
+```
+helm/
+├── Chart.yaml              # Chart metadata
+├── values.yaml             # Default configuration values
+├── values-dev.yaml         # Development overrides
+├── values-prod.yaml        # Production overrides
+├── templates/
+│   ├── frontend-deployment.yaml
+│   ├── frontend-service.yaml
+│   ├── backend-deployment.yaml
+│   ├── backend-service.yaml
+│   ├── configmap.yaml
+│   ├── secrets.yaml
+│   └── ingress.yaml
+```
+
+**Required Labels:**
+- app.kubernetes.io/name: Application name
+- app.kubernetes.io/version: Application version
+- app.kubernetes.io/component: Component type (frontend/backend)
+- app.kubernetes.io/part-of: System name (evolution-todo)
+
+### Event-Driven Architecture (Phase V)
+
+Kafka topics MUST follow this structure:
+- task-events: All CRUD operations on tasks
+- reminders: Scheduled reminder triggers
+- task-updates: Real-time client synchronization events
+
+Dapr building blocks MUST be used for:
+- Pub/Sub: Kafka abstraction
+- State Management: Conversation and task state
+- Service Invocation: Inter-service communication
+- Bindings/Jobs API: Scheduled reminders
+- Secrets Management: API keys and credentials
+
+## Development Workflow
+
+### Spec-Driven Development Lifecycle
+
+1. **Specify** (/sp.specify or manual spec creation):
+   - Document user stories with priorities
+   - Define functional requirements
+   - Establish acceptance criteria
+   - Capture edge cases
+
+2. **Plan** (/sp.plan):
+   - Research existing codebase and dependencies
+   - Design architecture and component structure
+   - Define data models and API contracts
+   - Document technical decisions
+
+3. **Tasks** (/sp.tasks):
+   - Break plan into atomic, testable tasks
+   - Organize by user story for independent implementation
+   - Mark parallelizable tasks with [P]
+   - Link tasks to spec sections
+
+4. **Implement** (/sp.implement or manual with Claude Code):
+   - Execute tasks in dependency order
+   - Generate code via Claude Code (no manual coding)
+   - Reference Task IDs in all code
+   - Validate against acceptance criteria
+
+5. **Record** (automated PHR creation):
+   - Capture prompts and responses in history/prompts/
+   - Route by stage (constitution, spec, plan, tasks, etc.)
+   - Maintain complete audit trail
+
+### Commit and Deployment Standards
+
+- Commits MUST be created when explicitly requested by user
+- Commit messages MUST end with: "🤖 Generated with [Claude Code](https://claude.com/claude-code)"
+- Co-authored by: "Claude Opus 4.5 <noreply@anthropic.com>"
+- Pull requests MUST include summary and test plan
+- Each phase MUST be deployable and demonstrable independently
+
+### Hackathon Submission Requirements
+
+Each phase submission MUST include:
+- Public GitHub repository with all source code
+- /specs folder with specification files
+- CLAUDE.md with Claude Code instructions
+- README.md with setup instructions
+- Deployed application links (Vercel for frontend, Phase III+ for chatbot)
+- Demo video (maximum 90 seconds)
+- WhatsApp number for presentation invitation
+
+**Phase IV Additional Requirements:**
+- Dockerfile for frontend and backend
+- Helm charts in /helm directory
+- Minikube deployment instructions in README
+- kubectl commands documented for verification
 
 ## Governance
 
-- This Constitution applies to all agents, tools, and contributors
-- Amendments require:
-  - Documentation
-  - Rationale
-  - Migration plan
-- All PRs and reviews MUST verify constitutional compliance
-- Spec history MUST be preserved for auditability
+### Amendment Procedure
 
-This Constitution governs **how intelligence is designed, specified, planned, implemented, secured, and evolved across multiple hackathon phases**.
+This constitution supersedes all other project practices and conventions.
 
-**Version**: 1.2.0 | **Ratified**: 2025-12-01 | **Last Amended**: 2025-12-01
+Amendments require:
+1. Documented rationale for change
+2. Impact analysis on existing specs, plans, and tasks
+3. Version increment following semantic versioning:
+   - MAJOR: Breaking changes to principles or workflow
+   - MINOR: New principles or expanded guidance
+   - PATCH: Clarifications, typo fixes, non-semantic refinements
+4. Update to all dependent template files
+5. Sync Impact Report documenting changes
+
+### Compliance
+
+- All pull requests and code reviews MUST verify compliance with constitution
+- Any violation of NON-NEGOTIABLE principles MUST be rejected
+- Complexity that violates principles MUST be explicitly justified in plan.md
+- Constitution takes precedence over: Specify > Plan > Tasks in case of conflicts
+
+### Runtime Guidance
+
+For runtime development guidance and agent-specific instructions, refer to CLAUDE.md.
+For project-specific implementation patterns, refer to phase-specific documentation
+in specs/*/plan.md files.
+
+**Version**: 1.1.0 | **Ratified**: 2025-12-24 | **Last Amended**: 2026-01-16
