@@ -97,19 +97,19 @@ export default function TaskItem({
 
   if (isEditing) {
     return (
-      <div className="relative bg-card/80 backdrop-blur-sm p-4 rounded-2xl border-2 border-fuchsia-500/50">
+      <div className="relative bg-card/80 backdrop-blur-sm p-4 rounded-lg border border-primary/30 shadow-sm">
         <input
           type="text"
           value={editTitle}
           onChange={(e) => setEditTitle(e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-background/50 border-2 border-fuchsia-500/30 text-foreground focus:border-fuchsia-400 focus:outline-none mb-2"
+          className="w-full px-3 py-2 rounded-md bg-background/50 border border-input text-foreground focus:border-primary focus:outline-none mb-2"
           placeholder="Task title"
           maxLength={200}
         />
         <textarea
           value={editDescription}
           onChange={(e) => setEditDescription(e.target.value)}
-          className="w-full px-3 py-2 rounded-xl bg-background/50 border-2 border-fuchsia-500/30 text-foreground focus:border-fuchsia-400 focus:outline-none resize-none mb-3"
+          className="w-full px-3 py-2 rounded-md bg-background/50 border border-input text-foreground focus:border-primary focus:outline-none resize-none mb-3"
           placeholder="Description (optional)"
           rows={2}
           maxLength={1000}
@@ -117,14 +117,14 @@ export default function TaskItem({
         <div className="flex gap-2 justify-end">
           <button
             onClick={handleCancelEdit}
-            className="px-4 py-2 rounded-xl bg-background/50 border border-cyan-500/30 text-muted-foreground hover:text-foreground transition-colors"
+            className="px-4 py-2 rounded-md bg-background/50 border border-input text-muted-foreground hover:text-foreground transition-colors font-medium"
             disabled={loading}
           >
             Cancel
           </button>
           <button
             onClick={handleUpdate}
-            className="px-4 py-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-cyan-500 text-white font-medium transition-transform hover:scale-105 disabled:opacity-50"
+            className="px-4 py-2 rounded-md bg-gradient-to-r from-primary-start to-primary-end text-white font-medium border border-primary/30 transition-all hover:shadow-[0_4px_12px_rgba(0,97,255,0.3)] disabled:opacity-50"
             disabled={loading || !editTitle.trim()}
           >
             {loading ? 'Saving...' : 'Save'}
@@ -136,14 +136,14 @@ export default function TaskItem({
 
   return (
     <div
-      className={`relative bg-card/80 backdrop-blur-sm p-4 rounded-2xl transition-all border-2 ${
+      className={`relative bg-card/80 backdrop-blur-sm p-4 rounded-lg transition-all border ${
         isSelected
-          ? 'border-cyan-500 bg-cyan-500/10 shadow-[0_0_20px_rgba(0,217,255,0.2)]'
+          ? 'border-primary bg-primary/10 shadow-[0_0_15px_rgba(0,97,255,0.2)]'
           : task.completed
-          ? 'border-green-500/30 opacity-70'
+          ? 'border-success/30 opacity-70'
           : isOverdue()
-          ? 'border-red-500/40 bg-red-500/5'
-          : 'border-cyan-500/20 hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(0,217,255,0.1)]'
+          ? 'border-destructive/40 bg-destructive/5'
+          : 'border-input hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,97,255,0.1)]'
       }`}
     >
       <div className="flex items-start gap-3">
@@ -153,7 +153,7 @@ export default function TaskItem({
             type="checkbox"
             checked={isSelected}
             onChange={() => onSelect?.(task.id)}
-            className="w-4 h-4 rounded border-cyan-500/50 text-cyan-500 focus:ring-cyan-500/30 bg-background/50 cursor-pointer"
+            className="w-4 h-4 rounded border-input text-primary focus:ring-primary/30 bg-background/50 cursor-pointer"
           />
         </div>
 
@@ -161,10 +161,10 @@ export default function TaskItem({
         <button
           onClick={handleToggleComplete}
           disabled={loading}
-          className={`mt-1 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${
+          className={`mt-1 w-6 h-6 rounded-md border-2 flex items-center justify-center transition-all duration-300 ${
             task.completed
-              ? 'bg-gradient-to-br from-green-400 to-green-600 border-green-500 text-white shadow-[0_0_15px_rgba(34,197,94,0.4)]'
-              : 'border-cyan-500/50 hover:border-cyan-400 hover:shadow-[0_0_15px_rgba(0,217,255,0.3)]'
+              ? 'bg-gradient-to-br from-success to-success/80 border-success text-white shadow-[0_0_10px_rgba(34,197,94,0.3)]'
+              : 'border-input hover:border-primary hover:shadow-[0_0_10px_rgba(0,97,255,0.2)]'
           } ${loading ? 'opacity-50 cursor-wait' : 'cursor-pointer'}`}
           aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
         >
@@ -216,7 +216,7 @@ export default function TaskItem({
           {/* Date info toggle */}
           <button
             onClick={() => setShowDetails(!showDetails)}
-            className="mt-2 text-xs text-cyan-400/70 hover:text-cyan-400 transition-colors uppercase tracking-wide"
+            className="mt-2 text-xs text-muted-foreground/70 hover:text-primary transition-colors font-medium"
           >
             {showDetails ? 'Hide details' : 'Show details'}
           </button>
@@ -233,7 +233,7 @@ export default function TaskItem({
         <div className="flex gap-1">
           <button
             onClick={() => setIsEditing(true)}
-            className="p-2 rounded-lg text-muted-foreground hover:text-fuchsia-400 hover:bg-fuchsia-500/10 transition-all"
+            className="p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all"
             title="Edit task"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,7 +243,7 @@ export default function TaskItem({
           <button
             onClick={handleDelete}
             disabled={loading}
-            className="p-2 rounded-lg text-muted-foreground hover:text-red-400 hover:bg-red-500/10 transition-all"
+            className="p-2 rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all"
             title="Delete task"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

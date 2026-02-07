@@ -4,7 +4,7 @@ interface StatsCardProps {
   label: string;
   value: number | string;
   icon: 'total' | 'pending' | 'completed';
-  color: 'cyan' | 'fuchsia' | 'green';
+  color: 'cyan' | 'fuchsia' | 'green' | 'primary';
 }
 
 export default function StatsCard({ label, value, icon, color }: StatsCardProps) {
@@ -29,6 +29,13 @@ export default function StatsCard({ label, value, icon, color }: StatsCardProps)
       bg: 'bg-green-500/10',
       shadow: 'hover:shadow-[0_0_30px_rgba(34,197,94,0.2)]',
       gradient: 'from-green-500 to-green-600',
+    },
+    primary: {
+      border: 'border-primary/30 hover:border-primary',
+      text: 'text-primary',
+      bg: 'bg-primary/10',
+      shadow: 'hover:shadow-[0_0_20px_rgba(0,97,255,0.1)]',
+      gradient: 'from-primary-start to-primary-end',
     },
   };
 

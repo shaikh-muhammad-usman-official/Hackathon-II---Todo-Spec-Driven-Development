@@ -111,7 +111,7 @@ export default function TasksPage() {
               </svg>
             </div>
           </div>
-          <p className="text-cyan-400 uppercase tracking-wider text-sm">Initializing Neural Interface...</p>
+          <p className="text-primary text-sm">Loading Tasks...</p>
         </div>
       </div>
     );
@@ -122,9 +122,9 @@ export default function TasksPage() {
       {/* Cyber grid background */}
       <div className="absolute inset-0 cyber-grid" />
 
-      {/* Neon glow effects */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-[150px]" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-fuchsia-500/10 rounded-full filter blur-[150px]" />
+      {/* Subtle glow effects */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-end/10 rounded-full filter blur-[150px]" />
 
       {/* Header */}
       <Navbar />
@@ -132,7 +132,7 @@ export default function TasksPage() {
       {/* Data Operations Backdrop/Panel */}
       {showDataOps && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="w-full max-w-md bg-card border-2 border-cyan-500/30 rounded-2xl p-6 shadow-2xl relative">
+          <div className="w-full max-w-md bg-card border border-input rounded-lg p-6 shadow-lg relative">
             <button
               onClick={() => setShowDataOps(false)}
               className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
@@ -221,13 +221,13 @@ export default function TasksPage() {
               label="Total Tasks"
               value={stats.total}
               icon="total"
-              color="cyan"
+              color="primary"
             />
             <StatsCard
               label="Pending"
               value={stats.pending}
               icon="pending"
-              color="fuchsia"
+              color="primary"
             />
             <StatsCard
               label="Completed"

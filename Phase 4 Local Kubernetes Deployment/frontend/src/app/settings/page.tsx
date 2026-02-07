@@ -133,7 +133,7 @@ export default function SettingsPage() {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="flex items-center justify-center h-[calc(100vh-64px)]">
-          <Loader2 className="w-8 h-8 animate-spin text-cyan-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -158,20 +158,20 @@ export default function SettingsPage() {
               <Settings className="w-8 h-8 text-cyan-400" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-start to-primary-end bg-clip-text text-transparent">
                 System Preferences
               </h1>
-              <p className="text-muted-foreground uppercase text-xs tracking-[0.2em]">Neural interface configurations</p>
+              <p className="text-muted-foreground text-xs">Application settings and preferences</p>
             </div>
           </div>
 
           {message && (
-            <div className={`mb-6 p-4 rounded-xl border-2 animate-in fade-in slide-in-from-top-2 duration-300 ${
+            <div className={`mb-6 p-4 rounded-lg border animate-in fade-in slide-in-from-top-2 duration-300 ${
               message.type === 'success'
-                ? 'bg-green-500/10 border-green-500/30 text-green-400'
-                : 'bg-red-500/10 border-red-500/30 text-red-400'
+                ? 'bg-success/10 border-success/30 text-success'
+                : 'bg-destructive/10 border-destructive/30 text-destructive'
             }`}>
-              <p className="text-sm font-bold uppercase tracking-wide flex items-center gap-2">
+              <p className="text-sm font-medium flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-current animate-pulse" />
                 {message.text}
               </p>
@@ -194,9 +194,9 @@ export default function SettingsPage() {
                     console.log(`   New tab: ${tab.id}`);
                   }}
                   style={{ cursor: 'pointer', zIndex: 10, position: 'relative' }}
-                  className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider transition-all border ${
+                  className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all border ${
                     activeTab === tab.id
-                      ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.1)]'
+                      ? 'bg-primary/10 border-primary/30 text-primary shadow-[0_0_15px_rgba(0,97,255,0.1)]'
                       : 'border-transparent text-muted-foreground hover:bg-card/50 hover:text-foreground'
                   }`}
                 >
@@ -321,9 +321,9 @@ export default function SettingsPage() {
                           </div>
                         </div>
 
-                        <div className="p-4 rounded-xl bg-background/30 border border-cyan-500/10">
+                        <div className="p-4 rounded-lg bg-background/30 border border-input">
                           <p className="text-xs text-muted-foreground">
-                            <span className="font-bold text-cyan-400">Neural Tip:</span> Choose Light for bright environments or Dark for reduced eye strain.
+                            <span className="font-bold text-primary">Tip:</span> Choose Light for bright environments or Dark for reduced eye strain.
                           </p>
                         </div>
                       </div>
@@ -334,37 +334,37 @@ export default function SettingsPage() {
                 {/* NOTIFICATIONS TAB */}
                 {activeTab === 'notifications' && (
                   <div className="space-y-8 animate-in fade-in slide-in-from-right-5 duration-300">
-                    <div className="text-xs text-cyan-400 mb-2">✅ Active Tab: NOTIFICATIONS</div>
+                    <div className="text-xs text-primary mb-2">✅ Active Tab: NOTIFICATIONS</div>
                     <section className="space-y-4">
-                      <h3 className="text-sm font-bold text-cyan-400 uppercase tracking-[0.2em] flex items-center gap-2">
-                        <Bell className="w-4 h-4" /> Alert Protocols
+                      <h3 className="text-sm font-bold text-primary flex items-center gap-2">
+                        <Bell className="w-4 h-4" /> Notification Settings
                       </h3>
                       <div className="space-y-3">
-                        <label className="flex items-center justify-between p-4 rounded-xl bg-background/30 border border-cyan-500/5 cursor-pointer hover:bg-card/40 transition-all group">
+                        <label className="flex items-center justify-between p-4 rounded-lg bg-background/30 border border-input cursor-pointer hover:bg-card/40 transition-all group">
                           <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 group-hover:bg-cyan-500/20 transition-all">
-                              <Bell className="w-4 h-4 text-cyan-400" />
+                            <div className="p-2 rounded-md bg-primary/10 border border-input group-hover:bg-primary/20 transition-all">
+                              <Bell className="w-4 h-4 text-primary" />
                             </div>
                             <div>
-                              <p className="text-sm font-bold">Neural Node Updates (Email)</p>
-                              <p className="text-xs text-muted-foreground">Receive task updates via email transmission</p>
+                              <p className="text-sm font-medium">Email Updates</p>
+                              <p className="text-xs text-muted-foreground">Receive task updates via email</p>
                             </div>
                           </div>
                           <input
                             type="checkbox"
                             checked={preferences.email_notifications}
                             onChange={(e) => setPreferences({ ...preferences, email_notifications: e.target.checked })}
-                            className="w-5 h-5 rounded border-cyan-500/30 bg-background text-cyan-500 focus:ring-cyan-500 focus:ring-2"
+                            className="w-5 h-5 rounded border-input bg-background text-primary focus:ring-primary focus:ring-2"
                           />
                         </label>
 
-                        <label className="flex items-center justify-between p-4 rounded-xl bg-background/30 border border-cyan-500/5 cursor-pointer hover:bg-card/40 transition-all group">
+                        <label className="flex items-center justify-between p-4 rounded-lg bg-background/30 border border-input cursor-pointer hover:bg-card/40 transition-all group">
                           <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-fuchsia-500/10 border border-fuchsia-500/20 group-hover:bg-fuchsia-500/20 transition-all">
-                              <Bell className="w-4 h-4 text-fuchsia-400" />
+                            <div className="p-2 rounded-md bg-primary/10 border border-input group-hover:bg-primary/20 transition-all">
+                              <Bell className="w-4 h-4 text-primary" />
                             </div>
                             <div>
-                              <p className="text-sm font-bold">Direct Stream Alerts (Push)</p>
+                              <p className="text-sm font-medium">Push Notifications</p>
                               <p className="text-xs text-muted-foreground">Real-time push notifications to your device</p>
                             </div>
                           </div>
@@ -372,7 +372,7 @@ export default function SettingsPage() {
                             type="checkbox"
                             checked={preferences.push_notifications}
                             onChange={(e) => setPreferences({ ...preferences, push_notifications: e.target.checked })}
-                            className="w-5 h-5 rounded border-cyan-500/30 bg-background text-cyan-500 focus:ring-cyan-500 focus:ring-2"
+                            className="w-5 h-5 rounded border-input bg-background text-primary focus:ring-primary focus:ring-2"
                           />
                         </label>
 

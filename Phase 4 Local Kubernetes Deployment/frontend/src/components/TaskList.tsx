@@ -179,12 +179,12 @@ export default function TaskList({ userId, refreshTrigger }: TaskListProps) {
             setSearchQuery(e.target.value);
             setIsSearching(true);
           }}
-          placeholder="Search neural task stream..."
-          className="block w-full pl-12 pr-4 py-3 rounded-2xl bg-card/60 backdrop-blur-xl border-2 border-cyan-500/20 text-foreground placeholder-muted-foreground focus:border-cyan-500/50 focus:shadow-[0_0_20px_rgba(0,217,255,0.2)] focus:outline-none transition-all"
+          placeholder="Search tasks..."
+          className="block w-full pl-12 pr-4 py-3 rounded-lg bg-card/60 backdrop-blur-xl border border-input text-foreground placeholder-muted-foreground focus:border-primary/50 focus:shadow-[0_0_15px_rgba(0,97,255,0.1)] focus:outline-none transition-all"
         />
         {isSearching && (
           <div className="absolute inset-y-0 right-0 pr-4 flex items-center">
-            <div className="animate-spin rounded-full h-4 w-4 border-2 border-cyan-500 border-t-transparent"></div>
+            <div className="animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent"></div>
           </div>
         )}
       </div>
@@ -389,18 +389,18 @@ export default function TaskList({ userId, refreshTrigger }: TaskListProps) {
               </svg>
             )}
           </div>
-          <h3 className="text-xl font-bold mb-2 text-foreground">
+          <h3 className="text-xl font-medium mb-2 text-foreground">
             {statusFilter === 'completed'
-              ? 'No completed missions'
+              ? 'No completed tasks'
               : statusFilter === 'pending'
-              ? 'All missions complete!'
-              : 'No active missions'}
+              ? 'All tasks complete!'
+              : 'No active tasks'}
           </h3>
           <p className="text-muted-foreground">
             {statusFilter === 'all'
-              ? 'Initialize your first task above'
+              ? 'Create your first task above'
               : statusFilter === 'pending'
-              ? 'Outstanding work, agent!'
+              ? 'Great job! All tasks are completed.'
               : 'Complete some tasks to see them here'}
           </p>
         </div>

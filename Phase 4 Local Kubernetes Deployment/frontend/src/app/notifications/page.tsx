@@ -62,9 +62,9 @@ export default function NotificationsPage() {
   };
 
   const getIcon = (type: string) => {
-    if (type?.toLowerCase().includes('overdue')) return <AlertTriangle className="w-5 h-5 text-red-400" />;
-    if (type?.toLowerCase().includes('reminder')) return <Clock className="w-5 h-5 text-cyan-400" />;
-    return <MessageSquare className="w-5 h-5 text-fuchsia-400" />;
+    if (type?.toLowerCase().includes('overdue')) return <AlertTriangle className="w-5 h-5 text-destructive" />;
+    if (type?.toLowerCase().includes('reminder')) return <Clock className="w-5 h-5 text-primary" />;
+    return <MessageSquare className="w-5 h-5 text-primary" />;
   };
 
   const formatNotificationType = (type: string) => {
@@ -92,7 +92,7 @@ export default function NotificationsPage() {
       <div className="min-h-screen bg-background">
         <Navbar />
         <div className="flex items-center justify-center h-[calc(100vh-64px)]">
-          <Loader2 className="w-8 h-8 animate-spin text-cyan-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -109,61 +109,61 @@ export default function NotificationsPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-4">
               <div className="relative">
-                <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/30">
-                  <Bell className="w-8 h-8 text-cyan-400" />
+                <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
+                  <Bell className="w-8 h-8 text-primary" />
                 </div>
                 {unreadCount > 0 && (
-                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-fuchsia-500 rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-background animate-pulse">
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-background animate-pulse">
                     {unreadCount}
                   </span>
                 )}
               </div>
               <div>
-                <h1 className="text-3xl font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
-                  Neural Alerts
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-start to-primary-end bg-clip-text text-transparent">
+                  Notifications
                 </h1>
-                <p className="text-muted-foreground uppercase text-xs tracking-[0.2em]">Signal synchronization inbox</p>
+                <p className="text-muted-foreground text-xs">Your notification inbox</p>
               </div>
             </div>
 
             {unreadCount > 0 && (
               <button
                 onClick={handleMarkAllRead}
-                className="flex items-center space-x-2 px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 text-cyan-400 rounded-xl hover:bg-cyan-500/20 transition-all text-xs font-bold uppercase tracking-widest"
+                className="flex items-center space-x-2 px-4 py-2 bg-primary/10 border border-primary/30 text-primary rounded-lg hover:bg-primary/20 transition-all text-sm font-medium"
               >
-                Clear All Signals
+                Mark All Read
               </button>
             )}
           </div>
 
           {/* Notifications List */}
-          <div className="bg-card/50 backdrop-blur-xl border border-cyan-500/10 rounded-2xl overflow-hidden min-h-[400px]">
+          <div className="bg-card/50 backdrop-blur-xl border border-input rounded-lg overflow-hidden min-h-[400px]">
             {notifications.length > 0 ? (
-              <div className="divide-y divide-cyan-500/5">
+              <div className="divide-y divide-input">
                 {notifications.map((n) => (
                   <div
                     key={n.id}
-                    className={`p-6 transition-all group ${!n.sent ? 'bg-cyan-500/5 border-l-4 border-l-cyan-400' : 'bg-transparent filter grayscale-[0.5] opacity-80'}`}
+                    className={`p-6 transition-all group ${!n.sent ? 'bg-primary/5 border-l-4 border-l-primary' : 'bg-transparent opacity-70'}`}
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
-                        <div className={`mt-1 p-3 rounded-2xl border-2 transition-all ${!n.sent ? 'bg-background border-cyan-500/30 shadow-[0_0_15px_rgba(0,217,255,0.1)]' : 'bg-muted/50 border-transparent'}`}>
+                        <div className={`mt-1 p-3 rounded-lg border transition-all ${!n.sent ? 'bg-background border-primary shadow-[0_0_10px_rgba(0,97,255,0.1)]' : 'bg-muted/50 border-transparent'}`}>
                           {getIcon(n.notification_type)}
                         </div>
                         <div>
                           <div className="flex flex-wrap items-center gap-2">
-                             <h3 className={`font-bold uppercase tracking-wide ${!n.sent ? 'text-foreground' : 'text-muted-foreground line-through decoration-cyan-500/30'}`}>
+                             <h3 className={`font-medium ${!n.sent ? 'text-foreground' : 'text-muted-foreground'}`}>
                                 {formatNotificationType(n.notification_type)}
                              </h3>
-                             <span className="text-[10px] font-mono text-cyan-400/70 border border-cyan-500/20 px-1.5 py-0.5 rounded">
+                             <span className="text-xs font-mono text-primary/70 border border-input px-1.5 py-0.5 rounded">
                                 {new Date(n.created_at).toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' })}
                              </span>
                           </div>
-                          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                          <p className="text-sm text-muted-foreground mt-2">
                             {generateMessage(n)}
                           </p>
-                          <div className="flex items-center gap-4 mt-4 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
-                             <span>Source: Neural Node {n.task_id || 'System'}</span>
+                          <div className="flex items-center gap-4 mt-4 text-xs text-muted-foreground">
+                             <span>Source: Task {n.task_id || 'System'}</span>
                              <span>•</span>
                              <span>{new Date(n.created_at).toLocaleDateString()}</span>
                           </div>
@@ -173,8 +173,8 @@ export default function NotificationsPage() {
                       {!n.sent && (
                         <button
                           onClick={() => handleMarkRead(n.id)}
-                          className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 opacity-0 group-hover:opacity-100 transition-all hover:bg-cyan-500/20"
-                          title="Acknowledge Signal"
+                          className="p-2 rounded-md bg-primary/10 border border-input text-primary opacity-0 group-hover:opacity-100 transition-all hover:bg-primary/20"
+                          title="Mark as read"
                         >
                           <Check className="w-5 h-5" />
                         </button>
@@ -187,19 +187,19 @@ export default function NotificationsPage() {
               <div className="flex flex-col items-center justify-center py-32 text-center">
                  <div className="relative mb-6">
                     <BellOff className="w-16 h-16 text-muted-foreground/20" />
-                    <div className="absolute inset-0 bg-cyan-500/5 blur-2xl rounded-full" />
+                    <div className="absolute inset-0 bg-primary/5 blur-2xl rounded-full" />
                  </div>
-                 <h2 className="text-xl font-bold uppercase tracking-[0.2em] text-muted-foreground/50 mb-2">Signal Silence</h2>
-                 <p className="text-sm text-muted-foreground/40 max-w-[280px] leading-relaxed">
-                    No active notifications detected on the neural network at this time.
+                 <h2 className="text-xl font-medium text-muted-foreground/50 mb-2">No Notifications</h2>
+                 <p className="text-sm text-muted-foreground/40 max-w-[280px]">
+                    No active notifications at this time.
                  </p>
               </div>
             )}
           </div>
 
           <div className="flex justify-center p-4">
-             <p className="text-[10px] uppercase tracking-widest text-muted-foreground/50 font-medium">
-                System Time: {new Date().toISOString()} | Uplink Signal: 100%
+             <p className="text-xs text-muted-foreground/50">
+                System Time: {new Date().toISOString()}
              </p>
           </div>
         </div>

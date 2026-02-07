@@ -45,21 +45,21 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-xl border-b-2 border-cyan-500/20">
+    <nav className="sticky top-0 z-50 bg-card/80 backdrop-blur-xl border-b border-input">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/tasks" className="flex items-center space-x-3 group">
             <div className="relative w-10 h-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-fuchsia-500 rounded-xl blur-md opacity-60 group-hover:opacity-100 transition-opacity" />
-              <div className="relative w-full h-full bg-gradient-to-br from-cyan-500 to-fuchsia-500 rounded-xl flex items-center justify-center border-2 border-cyan-400/50">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-start to-primary-end rounded-xl blur-md opacity-40 group-hover:opacity-70 transition-opacity" />
+              <div className="relative w-full h-full bg-gradient-to-br from-primary-start to-primary-end rounded-xl flex items-center justify-center border border-primary/30">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent tracking-wider hidden sm:block">
-              NEURAL TASKS
+            <span className="text-xl font-semibold bg-gradient-to-r from-primary-start to-primary-end bg-clip-text text-transparent tracking-wide hidden sm:block">
+              PRO TASKS
             </span>
           </Link>
 
@@ -69,14 +69,14 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center space-x-2 px-3 py-2 rounded-xl transition-all duration-200 ${
+                className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg transition-all duration-200 ${
                   item.highlight
                     ? pathname === item.href
-                      ? 'bg-gradient-to-r from-cyan-500/20 to-fuchsia-500/20 text-cyan-400 border border-cyan-500/50 shadow-[0_0_15px_rgba(0,217,255,0.3)]'
-                      : 'text-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-fuchsia-500/10 border border-transparent hover:border-cyan-500/30'
+                      ? 'bg-gradient-to-r from-primary-start/20 to-primary-end/20 text-primary border border-primary/40 shadow-[0_0_15px_rgba(0,97,255,0.2)]'
+                      : 'text-foreground/70 hover:text-primary hover:bg-gradient-to-r hover:from-primary-start/10 hover:to-primary-end/10 border border-transparent hover:border-primary/30'
                     : pathname === item.href
-                    ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30'
-                    : 'text-muted-foreground hover:text-cyan-400 hover:bg-cyan-500/5'
+                    ? 'bg-primary/10 text-primary border border-primary/30'
+                    : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
                 }`}
               >
                 {item.icon}
@@ -87,7 +87,7 @@ export default function Navbar() {
 
           {/* Right section */}
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-card/50 rounded-lg border border-cyan-500/10">
+            <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-card/50 rounded-lg border border-input">
               <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               <span className="text-xs text-muted-foreground max-w-[120px] truncate">
                 {user?.name || user?.email || 'Authenticated'}
@@ -121,18 +121,18 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all ${
                   item.highlight
                     ? pathname === item.href
-                      ? 'bg-gradient-to-r from-cyan-500/20 to-fuchsia-500/20 text-cyan-400 border border-cyan-500/50 shadow-[0_0_20px_rgba(0,217,255,0.3)]'
-                      : 'text-cyan-400 border border-cyan-500/20 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-fuchsia-500/10'
+                      ? 'bg-gradient-to-r from-primary-start/20 to-primary-end/20 text-primary border border-primary/40 shadow-[0_0_15px_rgba(0,97,255,0.2)]'
+                      : 'text-primary border border-primary/20 hover:bg-gradient-to-r hover:from-primary-start/10 hover:to-primary-end/10'
                     : pathname === item.href
-                    ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.1)]'
-                    : 'text-muted-foreground hover:bg-cyan-500/5'
+                    ? 'bg-primary/10 text-primary border border-primary/30 shadow-[0_0_10px_rgba(0,97,255,0.1)]'
+                    : 'text-muted-foreground hover:bg-primary/5'
                 }`}
               >
                 {item.icon}
-                <span className="font-bold tracking-wide uppercase text-sm">{item.name}</span>
+                <span className="font-medium uppercase text-sm">{item.name}</span>
               </Link>
             ))}
             <button

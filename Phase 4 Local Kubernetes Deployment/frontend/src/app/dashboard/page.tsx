@@ -55,7 +55,7 @@ export default function DashboardPage() {
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <div className="flex items-center justify-center h-[calc(100vh-64px)]">
-          <Loader2 className="w-8 h-8 animate-spin text-cyan-500" />
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -82,42 +82,42 @@ export default function DashboardPage() {
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent">
-                Mission Analytics
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-start to-primary-end bg-clip-text text-transparent">
+                Productivity Analytics
               </h1>
-              <p className="text-muted-foreground uppercase text-xs tracking-[0.2em]">Neural performance data stream</p>
+              <p className="text-muted-foreground text-sm">Performance data and insights</p>
             </div>
             <div className="flex flex-col sm:flex-row items-end sm:items-center gap-3">
               {/* User Profile Card */}
-              <div className="flex items-center gap-3 px-4 py-2 bg-card/50 border border-cyan-500/20 rounded-xl backdrop-blur-sm">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-sm">
+              <div className="flex items-center gap-3 px-4 py-2 bg-card/50 border border-input rounded-lg backdrop-blur-sm">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-start to-primary-end flex items-center justify-center text-white font-bold text-sm">
                   {userName ? userName.charAt(0).toUpperCase() : (userEmail ? userEmail.charAt(0).toUpperCase() : 'U')}
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-foreground">{userName || 'Agent'}</span>
-                  <span className="text-[10px] text-muted-foreground">{userEmail}</span>
+                  <span className="text-xs font-medium text-foreground">{userName || 'User'}</span>
+                  <span className="text-xs text-muted-foreground">{userEmail}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-xl">
+              <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs font-bold uppercase text-cyan-400 tracking-wider">Live Uplink Active</span>
+                <span className="text-xs font-medium text-primary">Active</span>
               </div>
             </div>
           </div>
 
-          {/* Top Row: Mission Overview */}
+          {/* Top Row: Productivity Overview */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatsCard label="Total Nodes" value={data.total} icon="total" color="cyan" />
-            <StatsCard label="Pending Tasks" value={data.pending} icon="pending" color="fuchsia" />
-            <StatsCard label="Success Rate" value={Math.round(data.completion_rate * 100) / 100 + '%'} icon="completed" color="green" />
-            <div className="relative bg-card/80 backdrop-blur-sm p-6 rounded-2xl border-2 border-red-500/30 hover:shadow-[0_0_30px_rgba(239,68,68,0.2)] transition-all card-hover">
+            <StatsCard label="Total Tasks" value={data.total} icon="total" color="primary" />
+            <StatsCard label="Pending Tasks" value={data.pending} icon="pending" color="primary" />
+            <StatsCard label="Completion Rate" value={Math.round(data.completion_rate * 100) / 100 + '%'} icon="completed" color="green" />
+            <div className="relative bg-card/80 backdrop-blur-sm p-6 rounded-lg border border-destructive/30 hover:shadow-[0_0_20px_rgba(239,68,68,0.1)] transition-all card-hover">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg">
+                <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-destructive to-destructive/80 flex items-center justify-center shadow-md">
                   <AlertCircle className="text-white w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground uppercase tracking-wide">Overdue</p>
-                  <p className="text-3xl font-bold text-red-500">{data.overdue || 0}</p>
+                  <p className="text-sm text-muted-foreground">Overdue</p>
+                  <p className="text-3xl font-bold text-destructive">{data.overdue || 0}</p>
                 </div>
               </div>
             </div>
@@ -125,18 +125,18 @@ export default function DashboardPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Completion Progress */}
-            <div className="lg:col-span-2 bg-card/50 backdrop-blur-xl border border-cyan-500/10 rounded-2xl p-6 space-y-6">
+            <div className="lg:col-span-2 bg-card/50 backdrop-blur-xl border border-input rounded-lg p-6 space-y-6">
               <div className="flex justify-between items-center">
-                <h3 className="text-sm font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4" /> Productivity Stream
+                <h3 className="text-sm font-bold text-primary flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4" /> Productivity Progress
                 </h3>
-                <span className="text-xs text-muted-foreground uppercase font-bold tracking-widest">Neural Index: Stable</span>
+                <span className="text-xs text-muted-foreground font-medium">Status: Active</span>
               </div>
 
               <div className="space-y-2">
-                <div className="flex justify-between text-sm font-bold mb-2">
-                   <span className="uppercase tracking-widest">Global Completion Status</span>
-                   <span className="text-cyan-400">{Math.round((data.completed / (data.total || 1)) * 100)}%</span>
+                <div className="flex justify-between text-sm font-medium mb-2">
+                   <span>Overall Completion</span>
+                   <span className="text-primary">{Math.round((data.completed / (data.total || 1)) * 100)}%</span>
                 </div>
                 <ProgressBar completed={data.completed} total={data.total} />
               </div>
@@ -150,48 +150,48 @@ export default function DashboardPage() {
                     return (
                       <div key={i} className="flex-1 group relative">
                         <div
-                          className="w-full bg-gradient-to-t from-cyan-500/50 to-cyan-400 rounded-t-lg transition-all duration-500 group-hover:from-fuchsia-500/50 group-hover:to-fuchsia-400"
+                          className="w-full bg-gradient-to-t from-primary/50 to-primary rounded-t-md transition-all duration-500 group-hover:from-primary-end/50 group-hover:to-primary-end"
                           style={{ height: `${height}%` }}
                         />
-                        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover border border-cyan-500/30 px-2 py-1 rounded text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-popover border border-input px-2 py-1 rounded text-[10px] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                           {count}
                         </div>
                       </div>
                     );
                   })}
                 </div>
-                <div className="flex justify-between mt-4 px-2 text-[10px] uppercase font-bold text-muted-foreground tracking-tighter">
-                  <span>-7 Days</span>
-                  <span>-6D</span>
-                  <span>-5D</span>
-                  <span>-4D</span>
-                  <span>-3D</span>
-                  <span>-2D</span>
+                <div className="flex justify-between mt-4 px-2 text-xs text-muted-foreground">
+                  <span>7 Days Ago</span>
+                  <span>6D</span>
+                  <span>5D</span>
+                  <span>4D</span>
+                  <span>3D</span>
+                  <span>2D</span>
                   <span>Today</span>
                 </div>
               </div>
             </div>
 
             {/* Priority Matrix */}
-            <div className="bg-card/50 backdrop-blur-xl border border-cyan-500/10 rounded-2xl p-6 space-y-6">
-              <h3 className="text-sm font-bold text-fuchsia-400 uppercase tracking-widest flex items-center gap-2">
-                <PieChart className="w-4 h-4" /> Priority Matrix
+            <div className="bg-card/50 backdrop-blur-xl border border-input rounded-lg p-6 space-y-6">
+              <h3 className="text-sm font-bold text-primary flex items-center gap-2">
+                <PieChart className="w-4 h-4" /> Priority Distribution
               </h3>
 
               <div className="space-y-4">
                 {[
-                  { label: 'Critical', key: 'high', color: 'bg-red-500', text: 'text-red-400' },
-                  { label: 'Standard', key: 'medium', color: 'bg-yellow-500', text: 'text-yellow-400' },
-                  { label: 'Low Trace', key: 'low', color: 'bg-green-500', text: 'text-green-400' },
-                  { label: 'Default', key: 'none', color: 'bg-slate-500', text: 'text-slate-400' },
+                  { label: 'High Priority', key: 'high', color: 'bg-destructive', text: 'text-destructive' },
+                  { label: 'Medium Priority', key: 'medium', color: 'bg-warning', text: 'text-warning' },
+                  { label: 'Low Priority', key: 'low', color: 'bg-success', text: 'text-success' },
+                  { label: 'Normal', key: 'none', color: 'bg-muted', text: 'text-muted-foreground' },
                 ].map((p) => {
                   const count = data.priority_distribution?.[p.key] || 0;
                   const percent = Math.round((count / (data.total || 1)) * 100);
                   return (
                     <div key={p.key} className="space-y-1">
-                      <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest">
+                      <div className="flex justify-between text-xs font-medium">
                         <span>{p.label}</span>
-                        <span className={p.text}>{count} nodes ({percent}%)</span>
+                        <span className={p.text}>{count} tasks ({percent}%)</span>
                       </div>
                       <div className="h-1.5 w-full bg-slate-900 rounded-full overflow-hidden border border-white/5">
                         <div
@@ -204,13 +204,13 @@ export default function DashboardPage() {
                 })}
               </div>
 
-              <div className="mt-8 p-4 bg-background/50 rounded-xl border border-fuchsia-500/10">
+              <div className="mt-8 p-4 bg-background/50 rounded-lg border border-input">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-fuchsia-500/10 rounded-lg">
-                    <Calendar className="w-4 h-4 text-fuchsia-400" />
+                  <div className="p-2 bg-primary/10 rounded-md">
+                    <Calendar className="w-4 h-4 text-primary" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase text-muted-foreground font-bold tracking-widest">Upcoming Actions</p>
+                    <p className="text-xs text-muted-foreground font-medium">Upcoming Tasks</p>
                     <p className="text-lg font-bold text-foreground">{data.upcoming || 0} scheduled</p>
                   </div>
                 </div>
@@ -222,10 +222,10 @@ export default function DashboardPage() {
           <div className="flex justify-center pt-4">
             <button
                onClick={() => router.push('/tasks')}
-               className="group flex items-center gap-2 px-8 py-3 bg-card/50 border-2 border-cyan-500/30 rounded-2xl text-cyan-400 font-bold uppercase tracking-[0.2em] hover:bg-cyan-500/10 hover:border-cyan-400 transition-all shadow-[0_0_20px_rgba(0,217,255,0.1)]"
+               className="group flex items-center gap-2 px-6 py-3 bg-card/50 border border-input rounded-lg text-primary font-medium hover:bg-primary/10 hover:border-primary transition-all"
             >
-              Back to Neural Deck
-              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              Back to Tasks
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
           </div>
         </div>
