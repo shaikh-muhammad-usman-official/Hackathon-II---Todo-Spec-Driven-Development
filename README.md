@@ -183,37 +183,36 @@ Bot: ✓ Marked "Review pull requests" as complete
 ---
 
 ### ☸️ Phase IV: Local Kubernetes Deployment
-**Status**: Planned
+
 
 Deploy the AI chatbot on local Kubernetes infrastructure.
 
 **Features**:
-- 🔲 Dockerized frontend & backend
-- 🔲 Helm chart deployments
-- 🔲 Minikube orchestration
-- 🔲 AI-assisted DevOps (kubectl-ai, kagent)
-- 🔲 Service scaling & health checks
+-  Dockerized frontend & backend
+-  Helm chart deployments
+-  Minikube orchestration
+-  AI-assisted DevOps (kubectl-ai, kagent)
+-  Service scaling & health checks
 
 **Tech**: Docker, Kubernetes, Minikube, Helm
 
 ---
 
 ### ☁️ Phase V: Cloud-Native Production
-**Status**: Planned
 
 Production-grade, event-driven architecture on managed Kubernetes.
 
 **Features**:
-- 🔲 Advanced task features:
+-  Advanced task features:
   - Recurring tasks
   - Due dates & reminders
   - Tags, priorities, categories
   - Search, filter, sort
-- 🔲 Event-driven architecture (Kafka)
-- 🔲 Dapr runtime (pub/sub, state, secrets)
-- 🔲 Managed Kubernetes (AKS/GKE/EKS)
-- 🔲 CI/CD pipelines
-- 🔲 Observability (logging, metrics, tracing)
+-  Event-driven architecture (Kafka)
+-  Dapr runtime (pub/sub, state, secrets)
+-  Managed Kubernetes (AKS/GKE/EKS)
+-  CI/CD pipelines
+-  Observability (logging, metrics, tracing)
 
 **Tech**: Kubernetes, Kafka, Dapr, GitHub Actions
 
